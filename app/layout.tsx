@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
+import "./globals.css";
 import type { Metadata } from "next";
 import { Bitter } from "next/font/google";
-import "./globals.css";
-import { Header } from "@/components/shared/header";
+import { Header } from "@/components/shared";
 
 const bitter = Bitter({
   subsets: ["latin"],

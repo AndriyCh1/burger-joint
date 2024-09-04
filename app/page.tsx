@@ -1,4 +1,10 @@
-import { Container, Title, TopBar, Filters } from "@/components/shared";
+import {
+  Container,
+  Title,
+  TopBar,
+  Filters,
+  ProductsGroupList,
+} from "@/components/shared";
 
 export default function Home() {
   return (
@@ -14,7 +20,132 @@ export default function Home() {
           </div>
           {/* List of items */}
           <div className="flex-1">
-            <div className="flex flex-col gap-16">List of items</div>
+            <div className="flex flex-col gap-16">
+              <ProductsGroupList
+                title="Classic"
+                categoryId={1}
+                items={[
+                  {
+                    id: 1,
+                    name: "Burger",
+                    imageUrl: "/images/burger.png",
+                    price: 10,
+                    items: [
+                      {
+                        id: 1,
+                        name: "Burger",
+                        imageUrl: "/images/burger.png",
+                        price: 10,
+                      },
+                    ],
+                  },
+                  {
+                    id: 2,
+                    name: "Burger",
+                    imageUrl: "/images/burger.png",
+                    price: 10,
+                    items: [
+                      {
+                        id: 1,
+                        name: "Burger",
+                        imageUrl: "/images/burger.png",
+                        price: 10,
+                      },
+                    ],
+                  },
+                  {
+                    id: 3,
+                    name: "Burger",
+                    imageUrl: "/images/burger.png",
+                    price: 10,
+                    items: [
+                      {
+                        id: 1,
+                        name: "Burger",
+                        imageUrl: "/images/burger.png",
+                        price: 10,
+                      },
+                    ],
+                  },
+                  {
+                    id: 4,
+                    name: "Burger",
+                    imageUrl: "/images/burger.png",
+                    price: 10,
+                    items: [
+                      {
+                        id: 1,
+                        name: "Burger",
+                        imageUrl: "/images/burger.png",
+                        price: 10,
+                      },
+                    ],
+                  },
+                ]}
+              />
+              <ProductsGroupList
+                title="Specialty"
+                categoryId={2}
+                items={[
+                  {
+                    id: 1,
+                    name: "Burger",
+                    imageUrl: "/images/burger.png",
+                    price: 10,
+                    items: [
+                      {
+                        id: 1,
+                        name: "Burger",
+                        imageUrl: "/images/burger.png",
+                        price: 10,
+                      },
+                    ],
+                  },
+                  {
+                    id: 2,
+                    name: "Burger",
+                    imageUrl: "/images/burger.png",
+                    price: 10,
+                    items: [
+                      {
+                        id: 1,
+                        name: "Burger",
+                        imageUrl: "/images/burger.png",
+                        price: 10,
+                      },
+                    ],
+                  },
+                  {
+                    id: 3,
+                    name: "Burger",
+                    imageUrl: "/images/burger.png",
+                    price: 10,
+                    items: [
+                      {
+                        id: 1,
+                        name: "Burger",
+                        imageUrl: "/images/burger.png",
+                        price: 10,
+                      },
+                    ],
+                  },
+                  {
+                    id: 4,
+                    name: "Burger",
+                    imageUrl: "/images/burger.png",
+                    price: 10,
+                    items: [
+                      {
+                        id: 1,
+                        name: "Burger",
+                        imageUrl: "/images/burger.png",
+                        price: 10,
+                      },
+                    ],
+                  },
+                ]}
+              />
+            </div>
           </div>
         </div>
       </Container>

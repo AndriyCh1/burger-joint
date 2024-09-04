@@ -1,21 +1,25 @@
-import { cn } from "@/lib/utils";
+"use client";
+
 import { FC } from "react";
+import { cn } from "@/lib/utils";
+import { useCategoryStore } from "@/store/category";
 
 type Props = {
   className?: string;
 };
 
 const categories = [
-  "Classic",
-  "Specialty",
-  "Vegan",
-  "Chicken Burgers",
-  "Fish Burgers",
-  "Sides",
+  { id: 1, name: "Classic" },
+  { id: 2, name: "Specialty" },
+  { id: 3, name: "Vegan" },
+  { id: 4, name: "Chicken Burgers" },
+  { id: 5, name: "Fish Burgers" },
+  { id: 6, name: "Sides" },
 ];
 
 export const Categories: FC<Props> = ({ className }) => {
-  const activeIndex = 0;
+  const activeId = useCategoryStore((state) => state.activeId);
+  console.log(activeId);
 
   return (
     <div
@@ -23,14 +27,14 @@ export const Categories: FC<Props> = ({ className }) => {
     >
       {categories.map((category, index) => (
         <a
-          href="#1"
           key={index}
+          href={`#${category.name}`}
           className={cn("flex h-11 items-center rounded-2xl px-5 font-bold", {
             "bg-white shadow-md shadow-gray-200 text-primary":
-              activeIndex === index,
+              category.id === activeId,
           })}
         >
-          <button>{category}</button>
+          <button>{category.name}</button>
         </a>
       ))}
     </div>
