@@ -36,7 +36,7 @@ model Category {
 model Product {
   id          Int           @id @default(autoincrement())
   name        String
-  imageUrl    String
+  imageUrl    String?
   ingredients Ingredient[]
   items       ProductItem[]
 
@@ -50,7 +50,6 @@ model Product {
 model ProductItem {
   id        Int        @id @default(autoincrement())
   price     Int
-  size      Int?
   type      Int?
   cartItems CartItem[]
 
@@ -62,7 +61,7 @@ model Ingredient {
   id        Int        @id @default(autoincrement())
   name      String
   price     Int
-  imageUrl  String
+  imageUrl  String?
   products  Product[]
   cartItems CartItem[]
 
