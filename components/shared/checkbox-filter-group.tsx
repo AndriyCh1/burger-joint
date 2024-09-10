@@ -2,17 +2,20 @@
 
 import { FC, useState } from "react";
 import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui";
+import { Input, Skeleton } from "@/components/ui";
 import { FilterCheckbox, FilterCheckboxProps } from "./filter-checkbox";
 
 type Props = {
   className?: string;
   title: string;
-  items: FilterCheckboxProps[];
-  defaultItems?: FilterCheckboxProps[];
+  items: Omit<FilterCheckboxProps, "name">[];
+  name: string;
+  defaultItems?: Omit<FilterCheckboxProps, "name">[];
   limit?: number;
   searchInputPlaceholder?: string;
   defaultValue?: string[];
+  loading?: boolean;
+  selected: string[];
   onClickCheckbox?: (id: string) => void;
 };
 
@@ -24,10 +27,24 @@ export const CheckboxFilterGroup: FC<Props> = ({
   limit = 5,
   searchInputPlaceholder = "Search...",
   defaultValue,
+  loading,
+  selected,
   onClickCheckbox,
+  name,
 }) => {
   const [showAll, setShowAll] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+
+  if (loading) {
+    return (
+      <div className={className}>
+        <p className="mb-3 font-bold">{title}</p>
+        {Array.from({ length: limit }, (_, index) => (
+          <Skeleton key={index} className="mb-4 h-6 rounded-sm" />
+        ))}
+      </div>
+    );
+  }
 
   const list = showAll
     ? items.filter((item) =>
@@ -54,8 +71,9 @@ export const CheckboxFilterGroup: FC<Props> = ({
             text={item.text}
             value={item.value}
             endAdornment={item.endAdornment}
-            checked={false}
+            checked={selected.includes(item.value)}
             onCheckedChange={() => onClickCheckbox?.(item.value)}
+            name={name}
           />
         ))}
       </div>

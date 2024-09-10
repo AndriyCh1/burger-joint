@@ -3,23 +3,15 @@
 import { FC } from "react";
 import { cn } from "@/lib/utils";
 import { useCategoryStore } from "@/store/category";
+import { Category } from "@prisma/client";
 
 type Props = {
+  items: Category[];
   className?: string;
 };
 
-const categories = [
-  { id: 1, name: "Classic" },
-  { id: 2, name: "Specialty" },
-  { id: 3, name: "Vegan" },
-  { id: 4, name: "Chicken Burgers" },
-  { id: 5, name: "Fish Burgers" },
-  { id: 6, name: "Sides" },
-];
-
-export const Categories: FC<Props> = ({ className }) => {
+export const Categories: FC<Props> = ({ className, items: categories }) => {
   const activeId = useCategoryStore((state) => state.activeId);
-  console.log(activeId);
 
   return (
     <div

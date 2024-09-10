@@ -8,7 +8,7 @@ type Props = {
   id: number;
   name: string;
   price: number;
-  imageUrl: string;
+  imageUrl?: string;
   className?: string;
 };
 
@@ -23,10 +23,14 @@ export const ProductCard: FC<Props> = ({
     <div className={className}>
       <Link href="">
         <div className="flex h-[260px] justify-center rounded-lg bg-secondary p-6">
-          <img className="size-[215px]" src={imageUrl} alt={name} />
+          <img
+            className="size-[215px]"
+            src={imageUrl || "/placeholder-image.jpg"}
+            alt={name}
+          />
         </div>
         <Title className="mb-1 mt-3 font-bold" text={name} size="sm" />
-        <p className="texts-sm text-gray-400">TODO: ingredients</p>
+        <p className="text-sm text-gray-400">TODO: ingredients</p>
         <div className="mt-4 flex items-center justify-between">
           <span className="text-[20px]">
             from <b>{price} $</b>
